@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário para Levantamento de Obreiros</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Cabeçalho -->
+        <header>
+            <h1>Formulário para Levantamento de Obreiros</h1>
+        </header>
+
+        <!-- Barra de progresso -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+            <div class="progress-text">
+                <span id="stepText">Etapa 1 de 14</span>
+            </div>
+        </div>
+
+        <!-- Formulário Multi-Step -->
+        <form id="obreiroForm">
+            
+            <!-- STEP 1 - DADOS PESSOAIS -->
+            <div class="form-step active" data-step="1">
+                <h2>Dados Pessoais</h2>
+                
+                <div class="form-group">
+                    <label for="nomeCompleto">Nome Completo *</label>
+                    <input type="text" id="nomeCompleto" name="nomeCompleto" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="endereco">Rua / Endereço *</label>
+                    <input type="text" id="endereco" name="endereco" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cidade">Cidade *</label>
+                    <input type="text" id="cidade" name="cidade" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="estadoCivil">Estado Civil *</label>
+                    <select id="estadoCivil" name="estadoCivil" required>
+                        <option value="">Selecione...</option>
+                        <option value="Solteiro(a)">Solteiro(a)</option>
+                        <option value="Casado(a)">Casado(a)</option>
+                        <option value="Divorciado(a)">Divorciado(a)</option>
+                        <option value="Viúvo(a)">Viúvo(a)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="rg">Carteira de Identidade (RG) *</label>
+                    <input type="text" id="rg" name="rg" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="empregado">Empregado? *</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="empregado" value="Sim" required> Sim</label>
+                        <label><input type="radio" name="empregado" value="Não" required> Não</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="patente">Se militar, qual patente?</label>
+                    <input type="text" id="patente" name="patente" placeholder="Deixe em branco se não for militar">
+                </div>
+
+                <div class="form-group">
+                    <label for="aposentadoria">Se aposentado, motivo da aposentadoria</label>
+                    <input type="text" id="aposentadoria" name="aposentadoria" placeholder="Deixe em branco se não for aposentado">
+                </div>
+
+                <div class="form-group">
+                    <label for="escolaridade">Escolaridade *</label>
+                    <select id="escolaridade" name="escolaridade" required>
+                        <option value="">Selecione...</option>
+                        <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto</option>
+                        <option value="Ensino Fundamental Completo">Ensino Fundamental Completo</option>
+                        <option value="Ensino Médio Incompleto">Ensino Médio Incompleto</option>
+                        <option value="Ensino Médio Completo">Ensino Médio Completo</option>
+                        <option value="Ensino Superior Incompleto">Ensino Superior Incompleto</option>
+                        <option value="Ensino Superior Completo">Ensino Superior Completo</option>
+                        <option value="Pós-graduação">Pós-graduação</option>
+                        <option value="Mestrado">Mestrado</option>
+                        <option value="Doutorado">Doutorado</option>
+                    </select>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-next" onclick="nextStep()">Próximo</button>
+                </div>
+            </div>
+
+            <!-- STEP 2 - VIDA ESPIRITUAL -->
+            <div class="form-step" data-step="2">
+                <h2>Vida Espiritual</h2>
+                <p class="subtitle">Reservado ao preenchimento do obreiro apresentando-se</p>
+
+                <div class="form-group">
+                    <label for="funcaoAtual">Função Atual *</label>
+                    <select id="funcaoAtual" name="funcaoAtual" required>
+                        <option value="">Selecione...</option>
+                        <option value="Evangelista">Evangelista</option>
+                        <option value="Obreiro">Obreiro</option>
+                        <option value="Diácono">Diácono</option>
+                        <option value="Presbítero">Presbítero</option>
+                        <option value="Pastor">Pastor</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="tempoFuncao">Tempo na função *</label>
+                    <input type="text" id="tempoFuncao" name="tempoFuncao" placeholder="Ex: 2 anos" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="grupoIntercessao">Grupo de intercessão? *</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="grupoIntercessao" value="Sim" required> Sim</label>
+                        <label><input type="radio" name="grupoIntercessao" value="Não" required> Não</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="responsavelTrabalho">É responsável por trabalho / igreja? *</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="responsavelTrabalho" value="Sim" required> Sim</label>
+                        <label><input type="radio" name="responsavelTrabalho" value="Não" required> Não</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="crescimentoGrupo">Crescimento do grupo assistente</label>
+                    <textarea id="crescimentoGrupo" name="crescimentoGrupo" rows="4" placeholder="Descreva o crescimento..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="visitasMes">Quantas visitas por mês aos irmãos da igreja *</label>
+                    <input type="number" id="visitasMes" name="visitasMes" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dizimista">É dizimista fiel? *</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="dizimista" value="Sim" required> Sim</label>
+                        <label><input type="radio" name="dizimista" value="Não" required> Não</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="tempoICM">Tempo na ICM *</label>
+                    <input type="text" id="tempoICM" name="tempoICM" placeholder="Ex: 5 anos" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="afastou">Já afastou-se da igreja por algum motivo? *</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="afastou" value="Sim" onchange="toggleAfastamentoMotivo(true)" required> Sim</label>
+                        <label><input type="radio" name="afastou" value="Não" onchange="toggleAfastamentoMotivo(false)" required> Não</label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="motivoAfastamentoGroup" style="display: none;">
+                    <label for="motivoAfastamento">Se sim, qual motivo?</label>
+                    <textarea id="motivoAfastamento" name="motivoAfastamento" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="provado">Foi provado? *</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="provado" value="Sim" required> Sim</label>
+                        <label><input type="radio" name="provado" value="Não" required> Não</label>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-prev" onclick="prevStep()">Anterior</button>
+                    <button type="button" class="btn btn-next" onclick="nextStep()">Próximo</button>
+                </div>
+            </div>
+
+            <!-- STEP 3 - INFORMAÇÕES COMPLEMENTARES -->
+            <div class="form-step" data-step="3">
+                <h2>Informações Complementares</h2>
+
+                <div class="form-group">
+                    <label for="observacoes">Observações gerais</label>
+                    <textarea id="observacoes" name="observacoes" rows="5" placeholder="Observações gerais..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="infoAdicionais">Informações adicionais relevantes ao ministério</label>
+                    <textarea id="infoAdicionais" name="infoAdicionais" rows="5" placeholder="Informações adicionais..."></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-prev" onclick="prevStep()">Anterior</button>
+                    <button type="button" class="btn btn-next" onclick="nextStep()">Próximo</button>
+                </div>
+            </div>
+
+            <!-- STEP 4 - ANEXOS -->
+            <div class="form-step" data-step="4">
+                <h2>Anexos</h2>
+
+                <div class="form-group">
+                    <label for="foto">Upload de foto 3x4 *</label>
+                    <p class="help-text">Foto com terno e gravata (JPG ou PNG)</p>
+                    <input type="file" id="foto" name="foto" accept="image/jpeg,image/png" onchange="previewFoto(event)" required>
+                    
+                    <div id="fotoPreview" class="foto-preview" style="display: none;">
+                        <img id="fotoImg" src="" alt="Preview da foto">
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-prev" onclick="prevStep()">Anterior</button>
+                    <button type="button" class="btn btn-next" onclick="nextStep()">Próximo</button>
+                </div>
+            </div>
+
+            <!-- STEP 5 - REVISÃO FINAL -->
+            <div class="form-step" data-step="5">
+                <h2>Revisão Final</h2>
+                <p class="subtitle">Confira todos os dados antes de gerar o PDF</p>
+
+                <div id="revisaoContainer" class="revisao-container">
+                    <!-- Será preenchido via JavaScript -->
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-prev" onclick="prevStep()">Anterior</button>
+                    <button type="button" class="btn btn-primary" onclick="gerarPDF()">Gerar PDF</button>
+                </div>
+            </div>
+
+        </form>
+
+        <!-- Mensagem de erro -->
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

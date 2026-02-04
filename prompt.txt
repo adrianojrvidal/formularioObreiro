@@ -1,0 +1,102 @@
+Quero desenvolver um projeto front-end simples, organizado e pronto para deploy no GitHub Pages.
+
+OBJETIVO
+Criar um formulário web MULTI STEP para levantamento de obreiros, onde o usuário:
+1. Acessa o formulário pelo navegador
+2. Preenche os dados passo a passo
+3. Revisa todas as informações
+4. Baixa um PDF com os dados preenchidos
+
+REGRAS GERAIS
+- Projeto 100% front-end (sem backend)
+- Compatível com GitHub Pages
+- Código limpo, modular e comentado
+- Fácil manutenção e edição futura
+- Interface simples, clara e responsiva
+
+TECNOLOGIAS
+- HTML5
+- CSS3
+- JavaScript puro (Vanilla JS)
+- Biblioteca para geração de PDF no front-end (jsPDF ou html2pdf.js)
+
+ESTRUTURA DO PROJETO
+- index.html
+- /css/style.css
+- /js/script.js
+- /assets (imagens se necessário)
+- README.md com instruções de uso e deploy no GitHub Pages
+
+FORMULÁRIO MULTI STEP
+O formulário deve ser dividido nos seguintes steps, exatamente nessa ordem:
+
+STEP 1 – DADOS PESSOAIS
+Campos:
+- Nome completo
+- Rua / Endereço
+- Cidade
+- E-mail
+- Estado civil
+- Carteira de Identidade (RG)
+- Empregado? (Sim / Não)
+- Se militar, qual patente
+- Se aposentado, motivo da aposentadoria
+- Escolaridade
+
+STEP 2 – VIDA ESPIRITUAL
+(Subtítulo: Reservado ao preenchimento do obreiro apresentando-se)
+
+Campos:
+- Função atual (Evangelista, Obreiro, Diácono, Presbítero, Pastor)
+- Tempo na função
+- Grupo de intercessão? (Sim / Não)
+- É responsável por trabalho / igreja? (Sim / Não)
+- Crescimento do grupo assistente (texto livre)
+- Quantas visitas por mês aos irmãos da igreja
+- É dizimista fiel? (Sim / Não)
+- Tempo na ICM
+- Já afastou-se da igreja por algum motivo? (Sim / Não)
+  - Se sim, qual motivo
+- Foi provado? (Sim / Não)
+
+STEP 3 – INFORMAÇÕES COMPLEMENTARES
+Campos:
+- Observações gerais
+- Informações adicionais relevantes ao ministério
+
+STEP 4 – ANEXOS
+Campos:
+- Upload de foto 3x4
+  - Foto com terno e gravata
+  - Aceitar JPG ou PNG
+  - Exibir preview da imagem
+
+STEP 5 – REVISÃO FINAL
+- Mostrar todos os dados preenchidos organizados por seção
+- Permitir voltar e editar qualquer step
+- Confirmação final dos dados
+
+STEP 6 – GERAÇÃO DO PDF
+- Gerar PDF com layout de ficha cadastral
+- Estrutura do PDF:
+  - Título: “Formulário para Levantamento de Obreiros”
+  - Dados Pessoais
+  - Vida Espiritual
+  - Informações Complementares
+  - Foto 3x4
+  - Data de preenchimento
+- Nome do arquivo:
+  formulario-<nome-do-obreiro>.pdf
+- Botão claro para baixar o PDF
+
+FUNCIONALIDADES EXTRAS
+- Barra de progresso entre os steps
+- Validação básica antes de avançar
+- Mensagens de erro amigáveis
+- Salvar progresso temporariamente no localStorage
+- Layout limpo e legível também no PDF
+
+ENTREGA
+- Código completo funcional
+- Explicação de como rodar localmente
+- Passo a passo para publicar no GitHub Pages

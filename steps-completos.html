@@ -1,0 +1,486 @@
+<!-- ============================================
+     STEPS 5-13 COMPLETOS
+     Cole este conteúdo no index.html após o STEP 4
+     ============================================ -->
+
+<!-- STEP 5: HISTÓRICO ESPIRITUAL -->
+<div class="form-step" data-step="5">
+    <h2>Histórico Espiritual</h2>
+
+    <div class="form-group">
+        <label>Já afastou-se da igreja? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="afastou" value="Sim" onchange="toggleAfastamento(true)" required> Sim</label>
+            <label><input type="radio" name="afastou" value="Não" onchange="toggleAfastamento(false)" required> Não</label>
+        </div>
+    </div>
+
+    <div id="afastamentoFields" style="display: none;">
+        <div class="form-group">
+            <label for="motivoAfastamento">Motivo do afastamento *</label>
+            <textarea id="motivoAfastamento" name="motivoAfastamento" rows="3"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Foi provado? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="foiProvado" value="Sim" required> Sim</label>
+            <label><input type="radio" name="foiProvado" value="Não" required> Não</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Tem experiência ministerial anterior? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="temExperiencia" value="Sim" required> Sim</label>
+            <label><input type="radio" name="temExperiencia" value="Não" required> Não</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Tem sequelas do passado? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="sequelasPassado" value="Sim" onchange="toggleSequelas(true)" required> Sim</label>
+            <label><input type="radio" name="sequelasPassado" value="Não" onchange="toggleSequelas(false)" required> Não</label>
+        </div>
+    </div>
+
+    <div id="sequelasFields" style="display: none;">
+        <div class="form-group">
+            <label for="descricaoSequelas">Descreva as sequelas *</label>
+            <textarea id="descricaoSequelas" name="descricaoSequelas" rows="3"></textarea>
+        </div>
+    </div>
+
+    <h3>Seminários Realizados</h3>
+    <div id="seminariosContainer">
+        <div class="repeater-item" data-index="0">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="seminarioData0">Data (Mês/Ano)</label>
+                    <input type="month" id="seminarioData0" name="seminarioData[]">
+                </div>
+                <div class="form-group">
+                    <label for="seminarioPeriodo0">Período</label>
+                    <input type="text" id="seminarioPeriodo0" name="seminarioPeriodo[]" placeholder="Ex: Manhã, Tarde">
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn-add" onclick="addSeminario()">+ Adicionar Seminário</button>
+
+    <div class="button-group">
+        <button type="button" class="btn btn-prev" onclick="prevStep()">Anterior</button>
+        <button type="button" class="btn btn-next" onclick="nextStep()">Próximo</button>
+    </div>
+</div>
+
+<!-- STEP 6: CONDUTA E ENVOLVIMENTO -->
+<div class="form-step" data-step="6">
+    <h2>Conduta e Envolvimento</h2>
+
+    <div class="form-group">
+        <label>Voluntário Maanaim? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="voluntarioMaanaim" value="Sim" required> Sim</label>
+            <label><input type="radio" name="voluntarioMaanaim" value="Não" required> Não</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Participa dos cultos de madrugada? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="cultosMadrugada" value="Sim" required> Sim</label>
+            <label><input type="radio" name="cultosMadrugada" value="Não" required> Não</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Participa do culto profético? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="cultoProfet ico" value="Sim" required> Sim</label>
+            <label><input type="radio" name="cultoProfet ico" value="Não" required> Não</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Tem governo do lar? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="governoLar" value="Sim" required> Sim</label>
+            <label><input type="radio" name="governoLar" value="Não" required> Não</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Família integrada na ICM? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="familiaICM" value="Sim" required> Sim</label>
+            <label><input type="radio" name="familiaICM" value="Não" required> Não</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Respeita o pastor? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="respeitaPastor" value="Sim" required> Sim</label>
+            <label><input type="radio" name="respeitaPastor" value="Não" required> Não</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>É zeloso com os bens da igreja? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="zelosoBens" value="Sim" required> Sim</label>
+            <label><input type="radio" name="zelosoBens" value="Não" required> Não</label>
+        </div>
+    </div>
+
+    <div class="button-group">
+        <button type="button" class="btn btn-prev" onclick="prevStep()">Anterior</button>
+        <button type="button" class="btn btn-next" onclick="nextStep()">Próximo</button>
+    </div>
+</div>
+
+<!-- STEP 7: DONS ESPIRITUAIS -->
+<div class="form-step" data-step="7">
+    <h2>Dons Espirituais</h2>
+
+    <div class="form-group">
+        <label>Usa dons espirituais? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="usaDons" value="Sim" required> Sim</label>
+            <label><input type="radio" name="usaDons" value="Não" required> Não</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Quais dons você usa? (pode marcar mais de um)</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="dons" value="Línguas"> Línguas</label>
+            <label><input type="checkbox" name="dons" value="Interpretação"> Interpretação</label>
+            <label><input type="checkbox" name="dons" value="Sonho"> Sonho</label>
+            <label><input type="checkbox" name="dons" value="Visão"> Visão</label>
+            <label><input type="checkbox" name="dons" value="Revelação"> Revelação</label>
+        </div>
+    </div>
+
+    <div class="button-group">
+        <button type="button" class="btn btn-prev" onclick="prevStep()">Anterior</button>
+        <button type="button" class="btn btn-next" onclick="nextStep()">Próximo</button>
+    </div>
+</div>
+
+<!-- STEP 8: DADOS FAMILIARES -->
+<div class="form-step" data-step="8">
+    <h2>Dados Familiares</h2>
+
+    <h3>Casamento</h3>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="tempoCasadoAnos">Tempo de Casado (Anos)</label>
+            <input type="number" id="tempoCasadoAnos" name="tempoCasadoAnos" min="0">
+        </div>
+        <div class="form-group">
+            <label for="tempoCasadoMeses">Meses</label>
+            <input type="number" id="tempoCasadoMeses" name="tempoCasadoMeses" min="0" max="11">
+        </div>
+    </div>
+
+    <h3>Esposa</h3>
+
+    <div class="form-group">
+        <label for="nomeEsposa">Nome da Esposa</label>
+        <input type="text" id="nomeEsposa" name="nomeEsposa">
+    </div>
+
+    <div class="form-group">
+        <label for="funcaoEsposa">Função da Esposa na Igreja</label>
+        <input type="text" id="funcaoEsposa" name="funcaoEsposa">
+    </div>
+
+    <div class="form-group">
+        <label for="profissaoEsposa">Profissão da Esposa</label>
+        <input type="text" id="profissaoEsposa" name="profissaoEsposa">
+    </div>
+
+    <div class="form-group">
+        <label for="idadeEsposa">Idade da Esposa</label>
+        <input type="number" id="idadeEsposa" name="idadeEsposa" min="0">
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="estadoCivilCandidatoAntes">Estado Civil do Candidato Antes</label>
+            <select id="estadoCivilCandidatoAntes" name="estadoCivilCandidatoAntes">
+                <option value="">Selecione...</option>
+                <option value="Solteiro">Solteiro</option>
+                <option value="Divorciado">Divorciado</option>
+                <option value="Viúvo">Viúvo</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="estadoCivilEsposaAntes">Estado Civil da Esposa Antes</label>
+            <select id="estadoCivilEsposaAntes" name="estadoCivilEsposaAntes">
+                <option value="">Selecione...</option>
+                <option value="Solteira">Solteira</option>
+                <option value="Divorciada">Divorciada</option>
+                <option value="Viúva">Viúva</option>
+            </select>
+        </div>
+    </div>
+
+    <h3>Filhos</h3>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="qtdFilhos">Quantidade de Filhos</label>
+            <input type="number" id="qtdFilhos" name="qtdFilhos" min="0" onchange="toggleMotivoSemFilhos()">
+        </div>
+        <div class="form-group">
+            <label for="filhosNaIgreja">Filhos na Igreja</label>
+            <input type="number" id="filhosNaIgreja" name="filhosNaIgreja" min="0">
+        </div>
+    </div>
+
+    <div id="motivoSemFilhosGroup" style="display: none;">
+        <div class="form-group">
+            <label for="motivoSemFilhos">Motivo de não ter filhos</label>
+            <textarea id="motivoSemFilhos" name="motivoSemFilhos" rows="3"></textarea>
+        </div>
+    </div>
+
+    <div class="button-group">
+        <button type="button" class="btn btn-prev" onclick="prevStep()">Anterior</button>
+        <button type="button" class="btn btn-next" onclick="nextStep()">Próximo</button>
+    </div>
+</div>
+
+<!-- STEP 9: FORMAÇÃO E ENSINO -->
+<div class="form-step" data-step="9">
+    <h2>Formação e Ensino</h2>
+
+    <div class="form-group">
+        <label>Já leu a Bíblia completa? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="leuBiblia" value="Sim" required> Sim</label>
+            <label><input type="radio" name="leuBiblia" value="Não" required> Não</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Tem o hábito de ler livros? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="livrosLidos" value="Sim" required> Sim</label>
+            <label><input type="radio" name="livrosLidos" value="Não" required> Não</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Pratica EBD? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="praticaEBD" value="Sim" required> Sim</label>
+            <label><input type="radio" name="praticaEBD" value="Não" required> Não</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Aplica satélite? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="aplicaSatelite" value="Sim" required> Sim</label>
+            <label><input type="radio" name="aplicaSatelite" value="Não" required> Não</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Fez curso de Instituto Bíblico? *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="cursoInstitutoBiblico" value="Sim" onchange="toggleAnoConclusao(true)" required> Sim</label>
+            <label><input type="radio" name="cursoInstitutoBiblico" value="Não" onchange="toggleAnoConclusao(false)" required> Não</label>
+        </div>
+    </div>
+
+    <div id="anoConclusaoGroup" style="display: none;">
+        <div class="form-group">
+            <label for="anoConclusao">Ano de Conclusão *</label>
+            <input type="number" id="anoConclusao" name="anoConclusao" min="1900" max="2100">
+        </div>
+    </div>
+
+    <div class="button-group">
+        <button type="button" class="btn btn-prev" onclick="prevStep()">Anterior</button>
+        <button type="button" class="btn btn-next" onclick="nextStep()">Próximo</button>
+    </div>
+</div>
+
+<!-- STEP 10: EXPERIÊNCIAS ESPIRITUAIS -->
+<div class="form-step" data-step="10">
+    <h2>Experiências Espirituais</h2>
+    <p class="subtitle">Descreva suas experiências com Deus</p>
+
+    <div class="form-group">
+        <label for="experienciaClamor">Experiência no Clamor</label>
+        <textarea id="experienciaClamor" name="experienciaClamor" rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="experienciaOracao">Experiência na Oração</label>
+        <textarea id="experienciaOracao" name="experienciaOracao" rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="experienciaJejum">Experiência no Jejum</label>
+        <textarea id="experienciaJejum" name="experienciaJejum" rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="experienciaMadrugada">Experiência na Madrugada</label>
+        <textarea id="experienciaMadrugada" name="experienciaMadrugada" rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="experienciaPalavra">Experiência com a Palavra</label>
+        <textarea id="experienciaPalavra" name="experienciaPalavra" rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="experienciaLouvor">Experiência no Louvor</label>
+        <textarea id="experienciaLouvor" name="experienciaLouvor" rows="4"></textarea>
+    </div>
+
+    <div class="button-group">
+        <button type="button" class="btn btn-prev" onclick="prevStep()">Anterior</button>
+        <button type="button" class="btn btn-next" onclick="nextStep()">Próximo</button>
+    </div>
+</div>
+
+<!-- STEP 11: MENSAGENS REVELADAS -->
+<div class="form-step" data-step="11">
+    <h2>Mensagens Reveladas</h2>
+
+    <div id="mensagensContainer">
+        <div class="repeater-item" data-index="0">
+            <div class="form-group">
+                <label for="mensagemReferencia0">Referência Bíblica</label>
+                <input type="text" id="mensagemReferencia0" name="mensagemReferencia[]" placeholder="Ex: João 3:16">
+            </div>
+            <div class="form-group">
+                <label for="mensagemTexto0">Mensagem</label>
+                <textarea id="mensagemTexto0" name="mensagemTexto[]" rows="4"></textarea>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn-add" onclick="addMensagem()">+ Adicionar Mensagem</button>
+
+    <div class="button-group">
+        <button type="button" class="btn btn-prev" onclick="prevStep()">Anterior</button>
+        <button type="button" class="btn btn-next" onclick="nextStep()">Próximo</button>
+    </div>
+</div>
+
+<!-- STEP 12: QUESTIONÁRIO TEOLÓGICO -->
+<div class="form-step" data-step="12">
+    <h2>Questionário Teológico</h2>
+
+    <div class="form-group">
+        <label for="palavraRevelada">O que é palavra revelada?</label>
+        <textarea id="palavraRevelada" name="palavraRevelada" rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="clamorSangue">O que é clamor de sangue?</label>
+        <textarea id="clamorSangue" name="clamorSangue" rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="igrejaCorpo">O que é a igreja como corpo?</label>
+        <textarea id="igrejaCorpo" name="igrejaCorpo" rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="salvacao">O que é salvação?</label>
+        <textarea id="salvacao" name="salvacao" rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="origemFe">Qual a origem da fé?</label>
+        <textarea id="origemFe" name="origemFe" rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="sacerdocio">O que é sacerdócio?</label>
+        <textarea id="sacerdocio" name="sacerdocio" rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="objetivoSatelite">Qual o objetivo do satélite?</label>
+        <textarea id="objetivoSatelite" name="objetivoSatelite" rows="4"></textarea>
+    </div>
+
+    <div class="button-group">
+        <button type="button" class="btn btn-prev" onclick="prevStep()">Anterior</button>
+        <button type="button" class="btn btn-next" onclick="nextStep()">Próximo</button>
+    </div>
+</div>
+
+<!-- STEP 13: QUESTIONÁRIO DA ESPOSA -->
+<div class="form-step" data-step="13">
+    <h2>Questionário da Esposa</h2>
+    <p class="subtitle">Se casado, a esposa deve responder</p>
+
+    <div class="form-group">
+        <label for="concordaOrdenacao">Concorda com a ordenação do esposo?</label>
+        <textarea id="concordaOrdenacao" name="concordaOrdenacao" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="concordaDoutrina">Concorda com a doutrina da igreja?</label>
+        <textarea id="concordaDoutrina" name="concordaDoutrina" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="concordaVoluntario">Concorda em ser voluntária?</label>
+        <textarea id="concordaVoluntario" name="concordaVoluntario" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="naoInterferir">Compromete-se a não interferir no ministério?</label>
+        <textarea id="naoInterferir" name="naoInterferir" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="comentariosEsposa">Comentários adicionais</label>
+        <textarea id="comentariosEsposa" name="comentariosEsposa" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="concordaAnulacao">Concorda que a ordenação pode ser anulada?</label>
+        <textarea id="concordaAnulacao" name="concordaAnulacao" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="assinaturaEsposa">Assinatura da Esposa (Nome completo)</label>
+        <input type="text" id="assinaturaEsposa" name="assinaturaEsposa">
+    </div>
+
+    <div class="button-group">
+        <button type="button" class="btn btn-prev" onclick="prevStep()">Anterior</button>
+        <button type="button" class="btn btn-next" onclick="nextStep()">Próximo</button>
+    </div>
+</div>
+
+<!-- STEP 14: REVISÃO FINAL -->
+<div class="form-step" data-step="14">
+    <h2>Revisão Final</h2>
+    <p class="subtitle">Confira todos os dados antes de gerar o PDF</p>
+
+    <div id="revisaoContainer" class="revisao-container">
+        <!-- Será preenchido via JavaScript -->
+    </div>
+
+    <div class="button-group">
+        <button type="button" class="btn btn-prev" onclick="prevStep()">Anterior</button>
+        <button type="button" class="btn btn-primary" onclick="gerarPDF()">Gerar PDF</button>
+    </div>
+</div>

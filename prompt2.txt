@@ -1,0 +1,504 @@
+PROMPT FINAL – FORMULÁRIO DIGITAL DE LEVANTAMENTO DE OBREIROS
+
+Você é um arquiteto de formulários digitais, UX designer mobile e analista de requisitos.
+Receberá como base uma planilha de levantamento de obreiros e deverá transformá-la em um formulário digital estruturado, seguindo rigorosamente todas as regras abaixo.
+
+OBJETIVOS PRINCIPAIS
+
+Mapear 100% dos campos da planilha
+
+Definir o tipo correto de cada campo:
+
+input
+
+textarea
+
+select
+
+checkbox
+
+radio
+
+repeater
+
+Organizar o formulário em STEPS (etapas) revisadas
+
+Agrupar campos por contexto semântico
+
+Gerar um JSON de schema pronto para o código
+
+Separar campos que NÃO devem aparecer no formulário digital, classificando como:
+
+CAMPOS EXCLUSIVOS DO PASTOR
+
+REGRAS DE UI / UX (OBRIGATÓRIO)
+
+UI mobile-first
+
+Steps curtos e objetivos
+
+Campos condicionais com exibição dinâmica
+
+Labels claras e linguagem simples
+
+Evitar poluição visual
+
+Um contexto por tela sempre que possível
+
+REGRAS DE ENDEREÇO (OBRIGATÓRIO)
+
+Campo CEP
+
+Autopreenche:
+
+Rua
+
+Bairro
+
+Cidade
+
+Estado
+
+Campos manuais:
+
+Número
+
+Complemento / campo adicional
+
+STEPS REVISADOS (OBRIGATÓRIO)
+🔹 STEP 1 – DADOS PESSOAIS
+
+Campos obrigatórios:
+
+Nome completo
+
+Data de nascimento
+
+CPF
+
+Telefone
+
+🔹 STEP 2 – CONTATO E ENDEREÇO
+
+Contato
+
+Telefone secundário (opcional)
+
+E-mail
+
+Endereço
+
+CEP (com autopreenchimento)
+
+Rua
+
+Número
+
+Complemento
+
+Bairro
+
+Cidade
+
+Estado
+
+🔹 STEP 3 – SITUAÇÃO PROFISSIONAL
+
+Campo principal:
+
+Situação profissional (select)
+
+Empregado
+
+Autônomo
+
+Aposentado
+
+Desempregado
+
+Regras condicionais:
+
+Se Situação = Empregado
+
+Profissão
+
+Empresa
+
+Se Situação = Autônomo
+
+Atividade / profissão exercida
+
+Se Situação = Aposentado
+
+Campo: Aposentado? (Sim / Não)
+
+Se SIM:
+
+Motivo da aposentadoria (textarea)
+
+🔹 STEP 4 – VÍNCULO MILITAR
+
+Campo:
+
+Militar? (Sim / Não)
+
+Se Militar = SIM
+
+Patente
+
+Arma
+
+Se Militar = NÃO
+
+Nenhum campo adicional (seguir fluxo normal)
+
+🔹 STEP 5 – INFORMAÇÕES ECLESIÁSTICAS (APENAS CAMPOS DO FORMULÁRIO)
+
+Tempo de conversão
+
+Tempo de igreja
+
+Cargo / função atual
+
+Ministérios que atua (checkbox ou repeater)
+
+CAMPOS EXCLUSIVOS DO PASTOR (FORA DO FORMULÁRIO DIGITAL)
+
+Identificar, separar e listar campos como:
+
+Avaliações internas
+
+Observações pastorais
+
+Aprovação / reprovação
+
+Datas de consagração
+
+Histórico disciplinar
+
+Notas confidenciais
+
+Qualquer campo sensível ou administrativo
+
+Esses campos não devem aparecer no formulário digital.
+
+SAÍDA OBRIGATÓRIA
+
+Responder EXATAMENTE nesta ordem:
+
+Lista dos STEPS revisados, com campos de cada etapa
+
+Agrupamento dos campos por contexto
+
+Lista dos CAMPOS EXCLUSIVOS DO PASTOR
+
+JSON de schema do formulário, contendo:
+
+steps
+
+campos
+
+tipos
+
+validações
+
+regras condicionais
+
+agrupamentos
+
+flags de mobile UI
+
+REGRAS FINAIS
+
+Não explicar conceitos
+
+Não inventar campos fora da planilha
+
+Ser técnico, direto e estruturado
+
+JSON pronto para uso em produção
+
+
+
+
+1️⃣ DEFINIÇÃO DO TIPO DE CAMPO
+
+(textarea, select, checkbox, repetidor, condicional)
+
+🟦 STEP 1 — IDENTIFICAÇÃO, CONTATO E ENDEREÇO
+Dados pessoais
+Campo	Tipo
+nome_completo	text
+data_nascimento	date
+cpf	text (mask)
+rg	text
+orgao_expedidor	text
+estado_civil	select
+foto_3x4	file
+Contato
+Campo	Tipo
+email	email
+telefone	tel (mask)
+Endereço
+Campo	Tipo
+cep	text (mask + auto fetch)
+endereco	text (auto preenchido)
+numero	text
+complemento	text
+bairro	text
+cidade	text
+uf	select
+🟦 STEP 2 — DADOS PROFISSIONAIS (FLUXO CONDICIONAL)
+Situação profissional
+Campo	Tipo
+empregado	radio (SIM / NÃO)
+tipo_profissional	select (CLT / AUTÔNOMO / APOSENTADO)
+Condicionais
+
+Se CLT
+
+profissao (text)
+
+empresa (text)
+
+tempo_servico_anos (number)
+
+tempo_servico_meses (number)
+
+Se AUTÔNOMO
+
+profissao (text)
+
+area_atuacao (text)
+
+tempo_atuacao_anos (number)
+
+tempo_atuacao_meses (number)
+
+Se APOSENTADO
+
+motivo_aposentadoria (textarea)
+
+🟦 STEP 3 — DADOS MILITARES
+Campo	Tipo
+militar	radio (SIM / NÃO)
+Se militar = SIM
+
+patente (text)
+
+arma (text)
+
+🟦 STEP 4 — VIDA MINISTERIAL
+Campo	Tipo
+funcao_atual	select
+tempo_funcao_anos	number
+tempo_funcao_meses	number
+grupo_intercessao	radio
+responsavel_trabalho	radio
+trabalho_com_resultado	radio
+crescimento_grupo_percentual	number
+visitas_mes	number
+dizimista	radio
+tempo_icm_anos	number
+tempo_icm_meses	number
+🟦 STEP 5 — HISTÓRICO ESPIRITUAL
+Campo	Tipo
+afastou_igreja	radio
+motivo_afastamento	textarea (condicional)
+foi_provado	radio
+tem_experiencia	radio
+sequelas_passado	radio
+descricao_sequelas	textarea (condicional)
+Seminários (repetidor)
+seminarios[] {
+  data: month
+  periodo: text
+}
+
+🟦 STEP 6 — CONDUTA E ENVOLVIMENTO
+
+Campos (radio):
+
+voluntario_maanaim
+
+cultos_madrugada
+
+culto_profetico
+
+governo_lar
+
+familia_icm
+
+respeita_pastor
+
+zeloso_bens
+
+🟦 STEP 7 — DONS ESPIRITUAIS
+Campo	Tipo
+usa_dons	radio
+Checkboxes
+
+linguas
+
+interpretacao
+
+sonho
+
+visao
+
+revelacao
+
+🟦 STEP 8 — DADOS FAMILIARES
+Casamento
+
+tempo_casado_anos (number)
+
+tempo_casado_meses (number)
+
+Esposa
+
+nome_esposa (text)
+
+funcao_esposa (text)
+
+profissao_esposa (text)
+
+idade_esposa (number)
+
+estado_civil_candidato_antes (select)
+
+estado_civil_esposa_antes (select)
+
+Filhos
+
+qtd_filhos (number)
+
+filhos_na_igreja (number)
+
+motivo_sem_filhos (textarea condicional)
+
+🟦 STEP 9 — FORMAÇÃO E ENSINO
+
+Campos (radio + condicional):
+
+leu_biblia
+
+livros_lidos
+
+pratica_ebd
+
+aplica_satelite
+
+curso_instituto_biblico
+
+ano_conclusao
+
+🟦 STEP 10 — EXPERIÊNCIAS ESPIRITUAIS (TEXTAREA)
+
+Todos textarea:
+
+experiencia_clamor
+
+experiencia_oracao
+
+experiencia_jejum
+
+experiencia_madrugada
+
+experiencia_palavra
+
+experiencia_louvor
+
+🟦 STEP 11 — MENSAGENS REVELADAS (REPETIDOR)
+mensagens[] {
+  referencia: text,
+  mensagem: textarea
+}
+
+🟦 STEP 12 — QUESTIONÁRIO TEOLÓGICO
+
+Todos textarea:
+
+palavra_revelada
+
+clamor_sangue
+
+igreja_corpo
+
+salvacao
+
+origem_fe
+
+sacerdocio
+
+objetivo_satelite
+
+🟦 STEP 13 — QUESTIONÁRIO DA ESPOSA
+
+Todos textarea:
+
+concorda_ordenacao
+
+concorda_doutrina
+
+concorda_voluntario
+
+nao_interferir
+
+comentarios
+
+concorda_anulacao
+
+assinatura_esposa
+
+2️⃣ CAMPOS EXCLUSIVOS DO PASTOR (FORA DO FORMULÁRIO)
+
+👉 Não entram no form web. Apenas PDF em branco.
+
+função_apresentado
+
+caracteristica_ministerio
+
+mensagem_revelada_avaliacao
+
+transmite_mensagem
+
+defeitos
+
+bom_testemunho
+
+maturidade_dons
+
+imitador_movimentos
+
+gastador
+
+comentarios_depreciativos
+
+pontual
+
+sobrio_vestir
+
+numero_igrejas
+
+numero_pastores
+
+obediente_dons
+
+apresentacoes_anteriores
+
+motivo_reprovacao
+
+igreja_assumir
+
+parecer_pastor
+
+dom_comissao_area
+
+dom_comissao_regiao
+
+parecer_conselho
+
+situacao_final
+
+assinaturas
